@@ -1,8 +1,7 @@
-from random import random
-from Automaat.BroodAutomaat import BroodAutomaat
-from Automaat.GroteBroodAutomaa import GroteBroodAutomaat
-from Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
-from Persoon import Koerier
+import random as rnd
+from classes.Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
+from classes.Persoon import Koerier, Klant
+from classes.Automaat import BroodAutomaat, GroteBroodAutomaat
 
 
 class BroodCo():
@@ -19,14 +18,17 @@ class BroodCo():
         self.distributeBroodToKoeriers()
         self.distributeBroodToAutomaten()
 
+    def run(self):
+        self.printMachineStatus()
+
     def fillAutomatenList(self):
         for i in range(0, 20):
             self.automatenlist.append(BroodAutomaat())
-            BroodAutomaat.addMachineNmr()
+            # BroodAutomaat.addMachineNmr()
 
         for i in range(0, 5):
             self.automatenlist.append(GroteBroodAutomaat())
-            GroteBroodAutomaat.addMachineNmr()
+            # GroteBroodAutomaat.addMachineNmr()
 
     def bakMoment(self, amount, type):
         if type == "meergranen":
@@ -53,9 +55,14 @@ class BroodCo():
 
         for k in self.koeriers:
             for i in range(0, 300):
-                k.storage.append(self.magazijn.pop(random.randint(0, 1500)))
+                k.storage.append(self.magazijn.pop(
+                    rnd.randint(0, len(self.magazijn)-1)))
 
     def distributeBroodToAutomaten(self):
         for k in self.koeriers:
-            self.automatenlist[random.randint(0, len(self.automatenlist) - 1)].storage.append(
-                k.storage.pop(random.randint(0, len(k.storage) - 1)))
+            self.automatenlist[rnd.randint(0, len(self.automatenlist) - 1)].storage.append(
+                k.storage.pop(rnd.randint(0, len(k.storage) - 1)))
+
+    def printMachineStatus(self):
+        for i in self.automatenlist:
+            print(i)
