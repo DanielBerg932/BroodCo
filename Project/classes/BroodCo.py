@@ -21,32 +21,32 @@ class BroodCo():
 
     def fillAutomatenList(self):
         for i in range(0, 20):
-            self.automatenlist.append(BroodAutomaat.__new__())
+            self.automatenlist.append(BroodAutomaat())
         for i in range(0, 5):
-            self.automatenlist.append(GroteBroodAutomaat.__new__())
+            self.automatenlist.append(GroteBroodAutomaat())
 
     def bakMoment(self, amount, type):
         if type == "meergranen":
             for i in range(0, amount):
-                self.magazijn.append(meergranen.__new__())
+                self.magazijn.append(meergranen())
         elif type == "rozijnen":
             for i in range(0, amount):
-                self.magazijn.append(rozijn.__new__())
+                self.magazijn.append(rozijn)
         elif type == "volkoren":
             for i in range(0, amount):
-                self.magazijn.append(volkoren.__new__())
+                self.magazijn.append(volkoren)
         elif type == "wit":
             for i in range(0, amount):
-                self.magazijn.append(wit.__new__())
+                self.magazijn.append(wit)
         elif type == "zuurdesem":
             for i in range(0, amount):
-                self.magazijn.append(zuurdes.__new__())
+                self.magazijn.append(zuurdes)
         else:
             print("Error")
 
     def distributeBroodToKoeriers(self):
         for i in range(0, 5):
-            self.koeriers.append(Koerier.__new__())
+            self.koeriers.append(Koerier())
 
         for k in self.koeriers:
             for i in range(0, 300):
