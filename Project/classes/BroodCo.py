@@ -62,8 +62,9 @@ class BroodCo():
 
     def distributeBroodToAutomaten(self):
         for k in self.koeriers:
-            self.automatenlist[rnd.randint(0, len(self.automatenlist) - 1)].storage.append(
-                k.storage.pop(rnd.randint(0, len(k.storage) - 1)))
+            while len(k.storage) > 0:
+                self.automatenlist[rnd.randint(0, len(
+                    self.automatenlist) - 1)].addBread(k.storage.pop(rnd.randint(0, len(k.storage) - 1)))
 
     def printMachineStatus(self):
         for i in self.automatenlist:

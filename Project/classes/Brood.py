@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 
 
 class Brood():
+    weight = 0
+
     @abstractmethod
     def __init__(self):
         self.weight = 0
