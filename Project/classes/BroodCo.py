@@ -1,8 +1,8 @@
 from random import random
-from classes.Automaat.BroodAutomaat import BroodAutomaat
-from classes.Automaat.GroteBroodAutomaa import GroteBroodAutomaat
-from classes.Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
-from classes.Persoon import Koerier
+from Automaat.BroodAutomaat import BroodAutomaat
+from Automaat.GroteBroodAutomaa import GroteBroodAutomaat
+from Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
+from Persoon import Koerier
 
 
 class BroodCo():
@@ -22,8 +22,11 @@ class BroodCo():
     def fillAutomatenList(self):
         for i in range(0, 20):
             self.automatenlist.append(BroodAutomaat())
+            BroodAutomaat.addMachineNmr()
+
         for i in range(0, 5):
             self.automatenlist.append(GroteBroodAutomaat())
+            GroteBroodAutomaat.addMachineNmr()
 
     def bakMoment(self, amount, type):
         if type == "meergranen":

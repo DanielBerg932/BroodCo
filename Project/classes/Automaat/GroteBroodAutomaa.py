@@ -1,4 +1,4 @@
-from classes.BroodAutomaat import BroodAutomaat
+from BroodAutomaat import BroodAutomaat
 
 
 class GroteBroodAutomaat(BroodAutomaat):

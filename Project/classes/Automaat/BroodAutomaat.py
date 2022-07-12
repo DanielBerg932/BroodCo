@@ -4,6 +4,16 @@ class BroodAutomaat():
         self.storage = []
         self.max_brood = 75
 
+    nummer = 0
+
+    @staticmethod
+    def addMachineNmr():
+        nummer = nummer+1
+
+    def __str__(self):
+        string = self.__name__ + self.nummer
+        return string
+
     def startup(self):
         print("Broodautomaat is starting up")
 
