@@ -1,17 +1,14 @@
 class BroodAutomaat():
 
-    #nummer = 0
+    nummer = 0
 
-    def __init__(self):
+    def __init__(self, count):
         self.storage = []
         self.max_brood = 75
-
-    # @staticmethod
-    # def addMachineNmr():
-        #nummer = nummer+1
+        self.count = count
 
     def __str__(self):
-        string = type(self).__name__
+        string = type(self).__name__ + str(self.count)
         return string
 
     def addBread(self, brood):
@@ -32,6 +29,6 @@ class BroodAutomaat():
 
 
 class GroteBroodAutomaat(BroodAutomaat):
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(self, count):
+        super().__init__(count)
         self.max_brood = 105

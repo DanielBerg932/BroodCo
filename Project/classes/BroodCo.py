@@ -1,3 +1,4 @@
+from itertools import count
 import random as rnd
 from classes.Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
 from classes.Persoon import Koerier, Klant
@@ -6,6 +7,7 @@ from classes.Automaat import BroodAutomaat, GroteBroodAutomaat
 
 class BroodCo():
     def __init__(self):
+        self.count = 0
         self.automatenlist = []
         self.koeriers = []
         self.magazijn = []
@@ -23,12 +25,12 @@ class BroodCo():
 
     def fillAutomatenList(self):
         for i in range(0, 20):
-            self.automatenlist.append(BroodAutomaat())
-            # BroodAutomaat.addMachineNmr()
-
+            self.count += 1
+            self.automatenlist.append(BroodAutomaat(self.count))
+        self.count = 0
         for i in range(0, 5):
-            self.automatenlist.append(GroteBroodAutomaat())
-            # GroteBroodAutomaat.addMachineNmr()
+            self.count += 1
+            self.automatenlist.append(GroteBroodAutomaat(self.count))
 
     def bakMoment(self, amount, type):
         if type == "meergranen":
