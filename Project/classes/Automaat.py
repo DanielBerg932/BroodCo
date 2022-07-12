@@ -1,7 +1,4 @@
 class BroodAutomaat():
-
-    nummer = 0
-
     def __init__(self, count):
         self.storage = []
         self.max_brood = 75
