@@ -20,7 +20,7 @@ class BroodAutomaat():
             self.storage.append(brood)
             self.capacity-brood.weight
         else:
-            print("Broodautomaat is full")
+            print(f"Broodautomaat: {self.count} is full")
 
     def removeBread(self):
         if len(self.storage) > 0:
@@ -28,9 +28,15 @@ class BroodAutomaat():
         else:
             print("Broodautomaat is empty")
 
-    def buyBread(self):
-        print("Brood is being bought")
-        return self.storage.pop()
+    def buyBread(self, btype):
+        counter = -1
+        for b in self.storage:
+            counter += 1
+            # set to always pass for debugging reasons
+            if b._type == btype or True:
+                return self.storage.pop(counter)
+            else:
+                return None
 
 
 class GroteBroodAutomaat(BroodAutomaat):

@@ -7,7 +7,6 @@ class Brood():
     @abstractmethod
     def __init__(self):
         self.weight = 0
-        self.timeOfProduction = 0
 
 
 class KleinBrood (Brood):
@@ -30,22 +29,37 @@ class MeergranenBrood(GrootBrood):
     def __init__(self):
         super().__init__()
 
+    def _type(self):
+        return "MeergranenBrood"
+
 
 class RozijnenBrood(KleinBrood):
     def __init__(self):
         super().__init__()
+
+    def _type():
+        return "RozijnenBrood"
 
 
 class VolkorenBrood (GrootBrood):
     def __init__(self):
         super().__init__()
 
+    def _type():
+        return "VolkorenBrood"
+
 
 class WitBrood(GrootBrood):
     def __init__(self):
         super().__init__()
 
+    def _type():
+        return "WitBrood"
+
 
 class ZuurdesemBrood(KleinBrood):
     def __init__(self):
         super().__init__()
+
+    def _type():
+        return "ZuurdesemBrood"

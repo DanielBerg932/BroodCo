@@ -10,7 +10,10 @@ class BroodCo():
         self.count = 0
         self.automatenlist = []
         self.koeriers = []
+        self.klanten = []
         self.magazijn = []
+        self.broodTypes = ['ZuurdesemBrood', 'WitBrood',
+                           'VolkorenBrood', 'RozijnenBrood', 'MeergranenBrood']
         self.fillAutomatenList()
         self.bakMoment(300, "meergranen")
         self.bakMoment(300, "rozijnen")
@@ -19,9 +22,11 @@ class BroodCo():
         self.bakMoment(300, "zuurdesem")
         self.distributeBroodToKoeriers()
         self.distributeBroodToAutomaten()
+        self.createKlanten(5)
 
     def run(self):
         self.printMachineStatus()
+        self.printClientStatus()
 
     def fillAutomatenList(self):
         for i in range(0, 20):
@@ -69,3 +74,38 @@ class BroodCo():
     def printMachineStatus(self):
         for i in self.automatenlist:
             print(i)
+        print('\n')
+
+    def printClientStatus(self):
+        for k in self.klanten:
+            print(k)
+        print('\n')
+        # we back at 0
+        # cntrl z to the rescue
+        # top
+
+    def createKlanten(self, count):
+        kCount = 0
+        for i in range(count):
+            kCount += 1
+            self.klanten.append(Klant(kCount))
+        for k in self.klanten:
+            machine = rnd.randint(0, len(self.automatenlist)-1)
+            btype = self.broodTypes[rnd.randint(0, len(self.broodTypes)-1)]
+            bread = self.buyBread(machine, btype)
+            k.addToStorage(bread, machine)
+
+    def buyBread(self, machineNr, bType):
+        return self.automatenlist[machineNr].buyBread(bType)
+
+    # def buyBreadInteractive(self):
+    #     machine = input('uit welke machine wil je kopen')
+    #     machineNr = 0
+    #     if machine[0] == 'g':
+    #         machineNr = int(machine[1])+20
+    #     elif machine[2] != None:  # checking if its a double digit
+    #         machineNr = int(machine[1]+machine[2])
+    #     else:
+    #         machineNr = int(machine[1])
+    #     bType = input('welke brood wil je kopen?')
+    #     bread = self.buyBread(machineNr, bType)
