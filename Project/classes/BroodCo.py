@@ -24,7 +24,7 @@ class BroodCo():
         self.distributeBroodToAutomaten()
         self.createKlanten(5)
 
-    def run(self):
+    def start(self):
         self.printMachineStatus()
         self.printClientStatus()
 
@@ -95,14 +95,20 @@ class BroodCo():
     def buyBread(self, machineNr, bType):
         return self.automatenlist[machineNr].buyBread(bType)
 
-    # def buyBreadInteractive(self):
-    #     machine = input('uit welke machine wil je kopen')
-    #     machineNr = 0
-    #     if machine[0] == 'g':
-    #         machineNr = int(machine[1])+20
-    #     elif machine[2] != None:  # checking if its a double digit
-    #         machineNr = int(machine[1]+machine[2])
-    #     else:
-    #         machineNr = int(machine[1])
-    #     bType = input('welke brood wil je kopen?')
-    #     bread = self.buyBread(machineNr, bType)
+    def buyBreadInteractive(self):
+        klant = int(input("als welke klant wil je brood kopen? "))
+        machine = input(
+            'uit welke machine wil je kopen, b1 voor BroodAutomaat 1, g1 voor GroteBroodAutomaat 1 enz: ')
+        machineNr = 0
+        if machine[0] == 'g':
+            machineNr = int(machine[1])+20
+        elif machine[0] == 'b':
+            machineNr = int(machine[1])
+        else:
+            machineNr = int(machine[1]+machine[2])
+        print('welke brood wil je kopen? de opties zijn:')
+        for b in self.broodTypes:
+            print('\t'+b)
+        bType = input('welke wil je kopen? ')
+        bread = self.buyBread(machineNr, bType)
+        self.klanten[klant-1].addToStorage(bread, machineNr)
