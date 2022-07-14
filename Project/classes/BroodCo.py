@@ -80,9 +80,6 @@ class BroodCo():
         for k in self.klanten:
             print(k)
         print('\n')
-        # we back at 0
-        # cntrl z to the rescue
-        # top
 
     def createKlanten(self, count):
         kCount = 0
