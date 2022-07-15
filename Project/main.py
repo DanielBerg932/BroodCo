@@ -11,7 +11,7 @@ def terminalUI():
     def menu():
         print("Welcome to the BroodCo")
         print("1. (Her)Start het programma")
-        print("2. Koop brood als klant")
+        print("2. Koop brood als client")
         print("3. Exit")
         choice = input("Please choose an option: ")
         return choice

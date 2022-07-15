@@ -1,7 +1,7 @@
 from itertools import count
 import random as rnd
 from classes.Brood import MeergranenBrood as meergranen, RozijnenBrood as rozijn, VolkorenBrood as volkoren, WitBrood as wit, ZuurdesemBrood as zuurdes
-from classes.Persoon import Koerier, Klant
+from classes.Persoon import Courier, Client
 from classes.Automaat import BroodAutomaat, GroteBroodAutomaat
 
 
@@ -9,10 +9,10 @@ class BroodCo():
     def __init__(self):
         self.count = 0
         self.automatenlist = []
-        self.koeriers = []
-        self.klanten = []
-        self.magazijn = []
-        self.broodTypes = ['ZuurdesemBrood', 'WitBrood',
+        self.couriers = []
+        self.clients = []
+        self.storage = []
+        self.breadTypes = ['ZuurdesemBrood', 'WitBrood',
                            'VolkorenBrood', 'RozijnenBrood', 'MeergranenBrood']
         self.fillAutomatenList()
         self.bakMoment(300, "meergranen")
@@ -20,7 +20,7 @@ class BroodCo():
         self.bakMoment(300, "volkoren")
         self.bakMoment(300, "wit")
         self.bakMoment(300, "zuurdesem")
-        self.distributeBroodToKoeriers()
+        self.distributeBroodToCouriers()
         self.distributeBroodToAutomaten()
         self.createKlanten(5)
 
@@ -40,33 +40,33 @@ class BroodCo():
     def bakMoment(self, amount, type):
         if type == "meergranen":
             for i in range(0, amount):
-                self.magazijn.append(meergranen())
+                self.storage.append(meergranen())
         elif type == "rozijnen":
             for i in range(0, amount):
-                self.magazijn.append(rozijn)
+                self.storage.append(rozijn)
         elif type == "volkoren":
             for i in range(0, amount):
-                self.magazijn.append(volkoren)
+                self.storage.append(volkoren)
         elif type == "wit":
             for i in range(0, amount):
-                self.magazijn.append(wit)
+                self.storage.append(wit)
         elif type == "zuurdesem":
             for i in range(0, amount):
-                self.magazijn.append(zuurdes)
+                self.storage.append(zuurdes)
         else:
             print("Error")
 
-    def distributeBroodToKoeriers(self):
+    def distributeBroodToCouriers(self):
         for i in range(0, 5):
-            self.koeriers.append(Koerier())
+            self.couriers.append(Courier())
 
-        for k in self.koeriers:
+        for k in self.couriers:
             for i in range(0, 300):
-                k.storage.append(self.magazijn.pop(
-                    rnd.randint(0, len(self.magazijn)-1)))
+                k.storage.append(self.storage.pop(
+                    rnd.randint(0, len(self.storage)-1)))
 
     def distributeBroodToAutomaten(self):
-        for k in self.koeriers:
+        for k in self.couriers:
             while len(k.storage) > 0:
                 self.automatenlist[rnd.randint(0, len(
                     self.automatenlist) - 1)].addBread(k.storage.pop(rnd.randint(0, len(k.storage) - 1)))
@@ -77,7 +77,7 @@ class BroodCo():
         print('\n')
 
     def printClientStatus(self):
-        for k in self.klanten:
+        for k in self.clients:
             print(k)
         print('\n')
 
@@ -85,10 +85,10 @@ class BroodCo():
         kCount = 0
         for i in range(count):
             kCount += 1
-            self.klanten.append(Klant(kCount))
-        for k in self.klanten:
+            self.clients.append(Client(kCount))
+        for k in self.clients:
             machine = rnd.randint(0, len(self.automatenlist)-1)
-            btype = self.broodTypes[rnd.randint(0, len(self.broodTypes)-1)]
+            btype = self.breadTypes[rnd.randint(0, len(self.breadTypes)-1)]
             bread = self.buyBread(machine, btype)
             k.addToStorage(bread, machine)
 
@@ -96,7 +96,7 @@ class BroodCo():
         return self.automatenlist[machineNr].buyBread(bType)
 
     def buyBreadInteractive(self):
-        klant = int(input("als welke klant wil je brood kopen? "))
+        client = int(input("als welke client wil je brood kopen? "))
         machine = input(
             'uit welke machine wil je kopen, b1 voor BroodAutomaat 1, g1 voor GroteBroodAutomaat 1 enz: ')
         machineNr = 0
@@ -107,8 +107,8 @@ class BroodCo():
         else:
             machineNr = int(machine[1]+machine[2])
         print('welke brood wil je kopen? de opties zijn:')
-        for b in self.broodTypes:
+        for b in self.breadTypes:
             print('\t'+b)
         bType = input('welke wil je kopen? ')
         bread = self.buyBread(machineNr, bType)
-        self.klanten[klant-1].addToStorage(bread, machineNr)
+        self.clients[client-1].addToStorage(bread, machineNr)
