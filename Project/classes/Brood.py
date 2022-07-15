@@ -8,6 +8,9 @@ class Brood():
     def __init__(self):
         self.weight = 0
 
+    def _type(self):
+        return 'brood'
+
 
 class KleinBrood (Brood):
     @abstractmethod
@@ -21,8 +24,6 @@ class GrootBrood(Brood):
     def __init__(self):
         super().__init__()
         self.weight = 1
-
-# speccefieke broden
 
 
 class MeergranenBrood(GrootBrood):

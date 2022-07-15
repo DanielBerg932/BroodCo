@@ -4,12 +4,12 @@ import uuid
 from classes.Brood import Brood
 
 
-class Koerier():
+class Courier():
     def __init__(self):
         self.storage = []
 
 
-class Klant(Koerier):
+class Client(Courier):
     def __init__(self, count):
         super().__init__()
         self.count = 0
@@ -36,12 +36,14 @@ class Klant(Koerier):
         for d in self.storage:
             for value in d.values():
                 dictArr.append(value)
-
-        defaultString = type(self).__name__ + ':' + str(self.count) + '\n\t'
-        btype = str(dictArr[0])
-        date = str(dictArr[1])
-        machine = str(dictArr[2])
-        guid = str(dictArr[3])
-        breadString = defaultString+btype+' gekocht op ' + \
-            date+' uit machine nr:'+machine+' met ID:'+guid+'\n'
+            defaultString = type(self).__name__ + ':' + \
+                str(self.count) + \
+                '----------------------------------------' + '\n\t'
+            btype = str(dictArr[0])
+            date = str(dictArr[1])
+            machine = str(dictArr[2])
+            guid = str(dictArr[3])
+            breadString = defaultString+'Bread: '+btype+'\n\t'+'purchase date: ' + \
+                date+'\n\t'+'machine Nr: '+machine+'\n\t'+'ID:'+guid+'\n'
+        dictArr = []
         return breadString
