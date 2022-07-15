@@ -25,7 +25,7 @@ class Client(Courier):
         if breadItem != None:
             self.breadDict['bType'] = breadItem._type()
             self.breadDict['datetime'] = str(
-                datetime.now().strftime("%m-%d om %H:%M"))
+                datetime.now().strftime("%m-%d at %H:%M"))
             # ensures the dict item is actually overwrtitten because its unique
             self.breadDict['guid'] = uuid.uuid4()
             self.breadDict['machineNr'] = machine

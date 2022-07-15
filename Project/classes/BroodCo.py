@@ -90,7 +90,7 @@ class BroodCo():
             machine = rnd.randint(0, len(self.automatenlist)-1)
             btype = self.breadTypes[rnd.randint(0, len(self.breadTypes)-1)]
             bread = self.buyBread(machine, btype)
-            k.addToStorage(bread, machine)
+            k.addToStorage(bread, machine+1)
 
     def buyBread(self, machineNr, bType):
         return self.automatenlist[machineNr].buyBread(bType)

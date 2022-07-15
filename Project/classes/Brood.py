@@ -9,7 +9,7 @@ class Brood():
         self.weight = 0
 
     def _type(self):
-        return 'brood'
+        return 'Brood'
 
 
 class KleinBrood (Brood):
