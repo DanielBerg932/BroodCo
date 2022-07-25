@@ -94,7 +94,7 @@ class BroodCo():
             klant.addToStorage(bread, machine+1)
 
     def buyBread(self, machineNr, bType):
-        return self.automatenlist[machineNr].buyBread(bType)
+        return self.automatenlist[machineNr-1].buyBread(bType)
 
     def buyBreadInteractive(self):
         client = int(input("als welke client wil je brood kopen? "))

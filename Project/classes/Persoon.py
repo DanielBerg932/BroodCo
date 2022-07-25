@@ -1,7 +1,5 @@
 from datetime import datetime
-from platform import machine
 import uuid
-from classes.Brood import Brood
 
 
 class Courier():
