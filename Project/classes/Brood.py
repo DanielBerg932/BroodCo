@@ -9,7 +9,7 @@ class Brood():
         self.weight = 0
 
     def _type(self):
-        return 'Brood'
+        return 'BROOD'
 
 
 class KleinBrood (Brood):
@@ -31,36 +31,36 @@ class MeergranenBrood(GrootBrood):
         super().__init__()
 
     def _type(self):
-        return "MeergranenBrood"
+        return "MEERGRANENBROOD"
 
 
 class RozijnenBrood(KleinBrood):
     def __init__(self):
         super().__init__()
 
-    def _type():
-        return "RozijnenBrood"
+    def _type(self):
+        return "ROZIJNENBROOD"
 
 
 class VolkorenBrood (GrootBrood):
     def __init__(self):
         super().__init__()
 
-    def _type():
-        return "VolkorenBrood"
+    def _type(self):
+        return "VOLKORENBROOD"
 
 
 class WitBrood(GrootBrood):
     def __init__(self):
         super().__init__()
 
-    def _type():
-        return "WitBrood"
+    def _type(self):
+        return "WITBROOD"
 
 
 class ZuurdesemBrood(KleinBrood):
     def __init__(self):
         super().__init__()
 
-    def _type():
-        return "ZuurdesemBrood"
+    def _type(self):
+        return "ZUURDESEMBROOD"

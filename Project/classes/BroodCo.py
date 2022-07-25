@@ -43,16 +43,16 @@ class BroodCo():
                 self.storage.append(meergranen())
         elif type == "rozijnen":
             for i in range(0, amount):
-                self.storage.append(rozijn)
+                self.storage.append(rozijn())
         elif type == "volkoren":
             for i in range(0, amount):
-                self.storage.append(volkoren)
+                self.storage.append(volkoren())
         elif type == "wit":
             for i in range(0, amount):
-                self.storage.append(wit)
+                self.storage.append(wit())
         elif type == "zuurdesem":
             for i in range(0, amount):
-                self.storage.append(zuurdes)
+                self.storage.append(zuurdes())
         else:
             print("Error")
 
@@ -86,11 +86,12 @@ class BroodCo():
         for i in range(count):
             kCount += 1
             self.clients.append(Client(kCount))
-        for k in self.clients:
+        for klant in self.clients:
             machine = rnd.randint(0, len(self.automatenlist)-1)
-            btype = self.breadTypes[rnd.randint(0, len(self.breadTypes)-1)]
+            btype = self.breadTypes[rnd.randint(
+                0, len(self.breadTypes)-1)].upper()
             bread = self.buyBread(machine, btype)
-            k.addToStorage(bread, machine+1)
+            klant.addToStorage(bread, machine+1)
 
     def buyBread(self, machineNr, bType):
         return self.automatenlist[machineNr].buyBread(bType)
@@ -109,6 +110,6 @@ class BroodCo():
         print('welke brood wil je kopen? de opties zijn:')
         for b in self.breadTypes:
             print('\t'+b)
-        bType = input('welke wil je kopen? ')
+        bType = input('welke wil je kopen? ').upper()
         bread = self.buyBread(machineNr, bType)
         self.clients[client-1].addToStorage(bread, machineNr)
